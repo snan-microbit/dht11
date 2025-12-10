@@ -4,11 +4,11 @@
 //%block="DHT11" weight=100 color=#ff8f3f icon="\uf2c9"
 namespace dht11 {
     export enum DHT11Type {
-        //% block="temperature(℃)"
+        //% block="temperatura(℃)"
         TemperatureC = 0,
-        //% block="temperature(℉)"
+        //% block="temperatura(℉)"
         TemperatureF = 1,
-        //% block="humidity(0~100%)"
+        //% block="humedad(0~100%)"
         Humidity = 2
     }
 
@@ -16,15 +16,15 @@ namespace dht11 {
     let dht11Temperature = 0;
 
     /**
-     * get dht11 temperature and humidity Value
-     * @param pin Analog pin connected to sensor
+     * Obtiene valores de temperatua o humedad del sensor DHT11
      * @param valueType Select temperature(℃/℉) value or humidity percentage
+     * @param pin Analog pin connected to sensor
      */
-    //% blockId="bp_dht11" block="DHT11 pin %pin %valueType"
-    //% tooltip="Reads the temperature or humidity from a DHT11 sensor connected to the specified pin."
+    //% blockId="bp_dht11" block="Leer %valueType del pin %pin"
+    //% tooltip="Lee la temperatura o humedad del sensor DHT11 conectado al pin especificado."
     //% pin.fieldEditor="gridpicker"
     //% help=github:pxt-bplab/dht11/README#dht11-dht11value
-    export function dht11value(pin: DigitalPin, valueType: DHT11Type): number {
+    export function dht11value(valueType: DHT11Type, pin: DigitalPin): number {
         const DHT11_TIMEOUT = 100;
         const buffer = pins.createBuffer(40);
         const data = [0, 0, 0, 0, 0];
